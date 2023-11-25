@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control</title>
+    <!-- Agrega el icono de la pestaña -->
+    <link rel="icon" href="img/electro1 (1).png" type="image/png">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #header {
+            background-color: #3498db;
+            color: #ffffff;
+            text-align: center;
+            padding: 2px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        #header h1 {
+            font-size: 1.5em; /* Tamaño de fuente más pequeño */
+            margin: 0;
+        }
+
+        #top-left, #top-right {
+            position: absolute;
+            width: 15%;
+            height: 20%;
+        }
+
+        #top-left {
+            top: 0;
+            left: 0;
+            background-image: url('path/to/left-image.jpg');
+        }
+
+        #top-right {
+            top: 0;
+            right: 0;
+            background-image: url('path/to/right-image.jpg');
+        }
+
+        #content {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: grid;
+            grid-template-rows: repeat(2, calc(25vh - 3%));
+            grid-template-columns: repeat(2, calc(50vw - 3%));
+            gap: 80px;
+            overflow-y: auto;
+        }
+
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 40%;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 10px;
+            left: 100px;
+            width: 70%;
+            height: 80%;
+        }
+
+        #button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #e74c3c;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header">
+        <h1>Sistema electrico para el tratamiento depurativo</h1>
+        <h1>de los lixiviados en los rellenos sanitarios</h1>
+        <p>Darinsson Agudelo Meza</p>
+        <p>Yair Eduardo Sepúlveda Carrillo</p>
+        <div id="top-left"><img src="img/logo (1).png" alt="logo UFPS"></div>
+        <div id="top-right"><img src="img/electro1 (1).png" alt="logo UFPS"></div>
+    </div>
+
+    <div id="content">
+        <div class="iframe-container">
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2356338/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Etapa+de+control&type=line"></iframe>
+        </div>
+        <div class="iframe-container">
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2356338/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Etapa+2&type=line"></iframe>
+        </div>
+        <div class="iframe-container">
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2356338/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Etapa+3&type=line"></iframe>
+        </div>
+        <div class="iframe-container">
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2356338/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Etapa+4&type=line"></iframe>
+        </div>
+    </div>
+
+    <button id="button" onclick="redirectToPage('https://thingspeak.com/channels/2356338/feed.csv')">Descargar datos</button>
+    <script>
+        function redirectToPage(url) {
+            window.location.href = url;
+        }
+    </script>
+
+</body>
+</html>
